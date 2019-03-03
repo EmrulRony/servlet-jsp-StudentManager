@@ -1,0 +1,15 @@
+create database student_manager;
+
+use student_manager;
+
+create table student(
+studentid int not null primary key,
+studentname varchar(50) not null,
+studentcontact nchar(11),
+studentgpa double,
+studentdob date
+);
+
+select * from student;
+
+insert into student values(101,"emrul",01687303054,2.5,"1993-01-31");
