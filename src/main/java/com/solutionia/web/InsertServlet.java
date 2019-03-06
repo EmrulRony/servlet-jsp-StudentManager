@@ -2,6 +2,7 @@ package com.solutionia.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.ejb.EJB;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.solutionia.model.Student;
+import com.solutionia.model.StudentInfo;
 import com.solutionia.services.StudentService;
 import com.solutionia.services.StudentServiceLocal;
 
@@ -18,23 +19,34 @@ import com.solutionia.services.StudentServiceLocal;
 public class InsertServlet extends HttpServlet{
 	@EJB
 	StudentServiceLocal studentService;
-	Student student = new Student();
+	StudentInfo student = new StudentInfo();
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		String strId = request.getParameter("StudentID");
-		String strPhone = request.getParameter("StudentNumber");
 		String strCGPA = request.getParameter("CGPA");
-		Date date = null;
+		String dateStr = request.getParameter("DOB");
+		Date date=null;
 		
 		int studentId = Integer.parseInt(strId);
 		String studentName = request.getParameter("StudentName");
-		int studentContact= Integer.parseInt(strPhone);
-		float cgpa = Float.parseFloat(strCGPA);
+		String strPhone = request.getParameter("StudentNumber");
+		Double cgpa = Double.parseDouble(strCGPA);
+		
+		try {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			date = dateFormat.parse(dateStr);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
 		
 		student.setStudentid(studentId);
 		student.setStudentname(studentName);
-		student.setContactNumber(studentContact);
-		student.setCgpa(cgpa);
+		student.setStudentcontact(strPhone);
+		student.setStudentgpa(cgpa);
+		student.setStudentdob(date);
 		
 		studentService.insertStudent(student);
 		

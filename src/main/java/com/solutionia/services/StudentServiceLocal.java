@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.solutionia.model.Student;
+import com.solutionia.model.StudentInfo;
 
 @Local
 public  interface StudentServiceLocal {
-	public void insertStudent(Student obj);
-	public void updateStudent(Student obj);
+	public void insertStudent(StudentInfo obj);
+	public void updateStudent(StudentInfo obj);
 	public void deleteStudent(int studentId);
-	public List<Student> listStudent();
+	public List<StudentInfo> listStudent();
 
 }
