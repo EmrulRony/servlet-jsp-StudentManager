@@ -33,15 +33,15 @@ public class InsertServlet extends HttpServlet{
 		Double cgpa = Double.parseDouble(strCGPA);
 		
 		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			date = dateFormat.parse(dateStr);
+			System.out.println("date "+dateStr);
 		}
 		catch (Exception e) {
 			System.out.println(e);
 		}
 		
-		
-		
+
 		student.setStudentid(studentId);
 		student.setStudentname(studentName);
 		student.setStudentcontact(strPhone);

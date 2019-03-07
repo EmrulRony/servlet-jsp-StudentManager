@@ -70,4 +70,11 @@ public class StudentInfo implements Serializable {
 		this.studentname = studentname;
 	}
 
+	@Override
+	public String toString() {
+		return "StudentInfo [studentid=" + studentid + ", studentcontact=" + studentcontact + ", studentdob="
+				+ studentdob + ", studentgpa=" + studentgpa + ", studentname=" + studentname + "]";
+	}
+	
+
 }

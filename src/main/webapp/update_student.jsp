@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>insert</title>
+<title>Update</title>
 </head>
 <body>
-	<form id="update" action="UpdateStudent" method="post">
+<form id="insert" action="InsertServlet" method="post">
 		<table>
 			<tr>
 				<td>Student ID</td>
@@ -32,8 +32,7 @@
 			</tr>
 		</table><br>
 
-		<input type="submit" id="CreateRecord" value="Update Student">
+		<input type="submit" id="CreateRecord" value="Create Record">
 	</form>
-
 </body>
 </html>

@@ -37,7 +37,7 @@ public class StudentService implements StudentServiceLocal {
 	@Override
 	public List<StudentInfo> listStudent() {
 		
-		Query q =em.createQuery("SELECT s FROM Student s");
+		Query q =em.createQuery("SELECT s FROM StudentInfo s");
 		
 		return q.getResultList();
 	}
