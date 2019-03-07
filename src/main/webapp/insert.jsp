@@ -7,7 +7,7 @@
 <title>insert</title>
 </head>
 <body>
-	<form id="update" action="UpdateStudent" method="post">
+	<form id="insert" action="InsertServlet" method="post">
 		<table>
 			<tr>
 				<td>Student ID</td>
@@ -32,8 +32,12 @@
 			</tr>
 		</table><br>
 
-		<input type="submit" id="CreateRecord" value="Update Student">
+		<input type="submit" id="CreateRecord" value="Insert Student"><br>
 	</form>
+	${msg}
+	<br>
+	<a href="index.jsp">Back To Home</a><br>
+	<tr><a href="ListStudent">Check Student List after insertion</a></tr><br>
 
 </body>
 </html>

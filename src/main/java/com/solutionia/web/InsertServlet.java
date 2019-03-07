@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ public class InsertServlet extends HttpServlet{
 	@EJB
 	StudentServiceLocal studentService;
 	StudentInfo student = new StudentInfo();
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String strId = request.getParameter("StudentID");
 		String strCGPA = request.getParameter("CGPA");
@@ -50,17 +52,9 @@ public class InsertServlet extends HttpServlet{
 		
 		studentService.insertStudent(student);
 		
-		PrintWriter out = response.getWriter();
-		
-		out.println("<html>");
-		out.println("<head><title>Data Insertion Completed</title></head>");
-		out.println("<body>");
-		out.println("<h1>Data insertion Completed</h1>");
-		out.println("<a href='ListServlet'>Check database after insertion</a><br>");
-		out.println("<a href='index.jsp'>Return to main page</a>");
-		out.println("</body>");
-		out.println("</html>");
-			
+		request.setAttribute("msg", "Insertion Successfull!!");
+	    RequestDispatcher rd = request.getRequestDispatcher("insert.jsp");
+	    rd.forward(request, response);
 		
 	}
 

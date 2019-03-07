@@ -10,7 +10,7 @@ import com.solutionia.model.StudentInfo;
 public  interface StudentServiceLocal {
 	public void insertStudent(StudentInfo obj);
 	public void updateStudent(StudentInfo obj);
-	public void deleteStudent(int studentId);
+	public String deleteStudent(int studentId);
 	public List<StudentInfo> listStudent();
 
 }

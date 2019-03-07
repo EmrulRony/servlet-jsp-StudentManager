@@ -28,9 +28,15 @@ public class StudentService implements StudentServiceLocal {
 	}
 
 	@Override
-	public void deleteStudent(int studentId) {
+	public String deleteStudent(int studentId) {
 		StudentInfo student = em.find(StudentInfo.class, studentId);
-		em.remove(student);
+		if (student!=null) {
+			em.remove(student);
+		}
+		else {
+			return "The Student is not in Database";
+		}
+		return "Succressfully Deleted Student";
 		
 	}
 

@@ -29,6 +29,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<a href="index.jsp">Back To Home</a><br>
 
 </body>
 </html>

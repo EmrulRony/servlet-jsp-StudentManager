@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +20,7 @@ import com.solutionia.services.StudentServiceLocal;
 public class UpdateServlet extends HttpServlet{
 	@EJB
 	StudentServiceLocal studentService;
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		StudentInfo studentModel = new StudentInfo();
 		
 		int studentId = Integer.parseInt(request.getParameter("StudentID"));
@@ -43,8 +45,12 @@ public class UpdateServlet extends HttpServlet{
 		
 		studentService.updateStudent(studentModel);
 		
-		PrintWriter out = response.getWriter();
-		out.print("Update Student Successfull!!");
+		String msg="Successfully Updated Student";
+		request.setAttribute("msg", msg);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("update_student.jsp");
+		rd.forward(request, response);
+		
 		
 	}
 
